@@ -12,6 +12,7 @@ public class GoatCrossing {
         int tripsNumber = Integer.parseInt(firstLine[1]);
 
         int[] goatWeights = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        Arrays.sort(goatWeights);
         reverseArray(goatWeights);
 
         // Sums the total weight of the goats and finds the average
@@ -31,12 +32,12 @@ public class GoatCrossing {
                     int lowestSum = Integer.MAX_VALUE;
                     int lowestIndex = Integer.MAX_VALUE;
                     for (int j = 0; j < sums.length; j++) {
-                        if (sums[j] + i < lowestSum) {
+                        if (sums[j] + goat < lowestSum) {
                             lowestIndex = j;
-                            lowestSum = sums[j] + i;
+                            lowestSum = sums[j] + goat;
                         }
                     }
-                    sums[lowestIndex] += i;
+                    sums[lowestIndex] += goat;
                 }
             }
         }
